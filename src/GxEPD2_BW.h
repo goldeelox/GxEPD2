@@ -181,6 +181,9 @@
 #if __has_include("epd/GxEPD2_750_T7.h")
 #include "epd/GxEPD2_750_T7.h"
 #endif
+#if __has_include("epd/GxEPD2_1330.h")
+#include "epd/GxEPD2_1330.h"
+#endif
 #if __has_include("gdey/GxEPD2_750_GDEY075T7.h")
 #include "gdey/GxEPD2_750_GDEY075T7.h"
 #endif
