@@ -64,6 +64,7 @@ class GxEPD2_1330 : public GxEPD2_EPD
     void powerOff(); // turns off generation of panel driving voltages, avoids screen fading over time
     void hibernate(); // turns powerOff() and sets controller to deep sleep for minimum power use, ONLY if wakeable by RST (rst >= 0)
   private:
+    void _reset();
     void _writeScreenBuffer(uint8_t value);
     void _setPartialRamArea(uint16_t x, uint16_t y, uint16_t w, uint16_t h);
     void _setRamArea(uint16_t xs, uint16_t xe, uint16_t ys, uint16_t ye);

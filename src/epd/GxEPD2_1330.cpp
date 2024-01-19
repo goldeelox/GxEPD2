@@ -295,6 +295,17 @@ void GxEPD2_1330::hibernate()
   }
 }
 
+void GxEPD2_1330::_reset(void)
+{
+  digitalWrite(_rst, HIGH);
+  delay(100);
+  digitalWrite(_rst, LOW);
+  delay(2);
+  digitalWrite(_rst, HIGH);
+  delay(100);
+  _hibernating = false;
+}
+
 void GxEPD2_1330::_setPartialRamArea(uint16_t x, uint16_t y, uint16_t w, uint16_t h)
 {
   //Serial.print("_setPartialRamArea("); Serial.print(x); Serial.print(", "); Serial.print(y); Serial.print(", "); Serial.print(w); Serial.print(", "); Serial.print(h); Serial.println(")");
