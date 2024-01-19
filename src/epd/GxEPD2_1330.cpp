@@ -324,26 +324,38 @@ void GxEPD2_1330::_setRamArea(uint16_t xs, uint16_t xe, uint16_t ys, uint16_t ye
 {
   //Serial.print("_setRamArea("); Serial.print(xs); Serial.print(", "); Serial.print(ys); Serial.print(", "); Serial.print(xe); Serial.print(", "); Serial.print(ye); Serial.println(")");
   _writeCommand(0x44); // Set RAM X address Start/End position
-  _writeData(xs % 256);
-  _writeData(xs / 256);
-  _writeData(xe % 256);
-  _writeData(xe / 256);
+  _writeData(xs & 0xFF);
+  _writeData((xs>>8) & 0x03);
+  _writeData(xe & 0xFF);
+  _writeData((xe>>8) & 0x03);
+  /* _writeData(xs % 256); */
+  /* _writeData(xs / 256); */
+  /* _writeData(xe % 256); */
+  /* _writeData(xe / 256); */
   _writeCommand(0x45); // Set RAM Y address Start/End position
-  _writeData(ys % 256);
-  _writeData(ys / 256);
-  _writeData(ye % 256);
-  _writeData(ye / 256);
+  _writeData(ys & 0xFF);
+  _writeData((ys>>8) & 0x03);
+  _writeData(ye & 0xFF);
+  _writeData((ye>>8) & 0x03);
+  /* _writeData(ys % 256); */
+  /* _writeData(ys / 256); */
+  /* _writeData(ye % 256); */
+  /* _writeData(ye / 256); */
 }
 
 void GxEPD2_1330::_setRamPointer(uint16_t xs, uint16_t ys)
 {
   //Serial.print("_setRamPointer("); Serial.print(xs); Serial.print(", "); Serial.print(ys); Serial.println(")");
   _writeCommand(0x4E); // Set RAM X Address Counter
-  _writeData(xs % 256);
-  _writeData(xs / 256);
+  _writeData(xs & 0xFF);
+  _writeData((xs>>8) & 0x03);
+  /* _writeData(xs % 256); */
+  /* _writeData(xs / 256); */
   _writeCommand(0x4F); // Set RAM Y Address Counter
-  _writeData(ys % 256);
-  _writeData(ys / 256);
+  _writeData(ys & 0xFF);
+  _writeData((ys>>8) & 0x03);
+  /* _writeData(ys % 256); */
+  /* _writeData(ys / 256); */
 }
 
 void GxEPD2_1330::_PowerOn()
