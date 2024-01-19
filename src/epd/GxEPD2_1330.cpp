@@ -414,7 +414,7 @@ void GxEPD2_1330::_Init_Part()
 void GxEPD2_1330::_Update_Full()
 {
   _writeCommand(0x22); // Display Update Sequence Options
-  _writeData(0xC7);    //
+  _writeData(0xF7);    //
   _writeCommand(0x20); // Master Activation
   _waitWhileBusy("_Update_Full", full_refresh_time);
 }
