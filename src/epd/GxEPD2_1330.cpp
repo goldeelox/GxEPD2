@@ -405,9 +405,9 @@ void GxEPD2_1330::_InitDisplay()
   _writeData(0x01);    // LUT1, for white
   _writeCommand(0x18); // Temperature Sensor Selection
   _writeData(0x80);    // internal temperature sensor
-  _writeCommand(0x22); // Display Update Sequence Options
-  _writeData(0xB1);    // Load Temperature and waveform setting.
-  _writeCommand(0x20); // Master Activation
+  /* _writeCommand(0x22); // Display Update Sequence Options */
+  /* _writeData(0xB1);    // Load Temperature and waveform setting. */
+  /* _writeCommand(0x20); // Master Activation */
   _waitWhileBusy(0, power_on_time);
 }
 
