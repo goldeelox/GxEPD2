@@ -351,7 +351,7 @@ void GxEPD2_1330::_PowerOn()
   if (!_power_is_on)
   {
     _writeCommand(0x22);
-    _writeData(0xF7);
+    _writeData(0xC0);
     _writeCommand(0x20);
     _waitWhileBusy("_PowerOn", power_on_time);
   }
@@ -363,7 +363,7 @@ void GxEPD2_1330::_PowerOff()
   if (_power_is_on)
   {
     _writeCommand(0x22);
-    _writeData(0xc3);
+    _writeData(0xC3);
     _writeCommand(0x20);
     _waitWhileBusy("_PowerOff", power_off_time);
   }
