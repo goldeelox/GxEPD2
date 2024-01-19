@@ -28,7 +28,7 @@ class GxEPD2_1330 : public GxEPD2_EPD
     static const bool hasPartialUpdate = false;
     static const bool usePartialUpdate = false; // set false to get better image (flashes full screen)
     static const bool hasFastPartialUpdate = false;
-    static const uint16_t power_on_time = 100; // ms, e.g. 82001us
+    static const uint16_t power_on_time = 200; // ms, e.g. 82001us
     static const uint16_t power_off_time = 250; // ms, e.g. 222001us
     static const uint16_t full_refresh_time = 4000; // ms, e.g. 22780001us
     static const uint16_t partial_refresh_time = 4000; // ms, e.g. 22780001us
