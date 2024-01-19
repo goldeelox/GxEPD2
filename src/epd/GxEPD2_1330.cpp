@@ -354,7 +354,7 @@ void GxEPD2_1330::_reset()
 
 void GxEPD2_1330::_InitDisplay()
 {
-  if (_hibernating) _reset();
+  _reset();
   Serial.println("init display started");
   _waitWhileBusy();
   _writeCommand(0x12); // SW RESET
