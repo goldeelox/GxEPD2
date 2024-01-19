@@ -338,23 +338,25 @@ void GxEPD2_1330::_PowerOff()
   _using_partial_mode = false;
 }
 
-/* void GxEPD2_1330::_reset() */
-/* { */
-/*   Serial.println("were here"); */
-/*   digitalWrite(_rst, HIGH); // NEEDED for Waveshare "clever" reset circuit, power controller before reset pulse, preset (less glitch for any analyzer) */
-/*   pinMode(_rst, OUTPUT); */
-/*   digitalWrite(_rst, HIGH); // NEEDED for Waveshare "clever" reset circuit, power controller before reset pulse, set (needed e.g. for RP2040) */
-/*   delay(100); // NEEDED for Waveshare "clever" reset circuit, at least delay(2); */
-/*   digitalWrite(_rst, LOW); */
-/*   delay(_reset_duration); */
-/*   digitalWrite(_rst, HIGH); */
-/*   delay(_reset_duration > 10 ? _reset_duration : 100); */
-/*   _hibernating = false; */
-/* } */
+void GxEPD2_1330::_reset()
+{
+  Serial.println("were here");
+  digitalWrite(_rst, HIGH); // NEEDED for Waveshare "clever" reset circuit, power controller before reset pulse, preset (less glitch for any analyzer)
+  pinMode(_rst, OUTPUT);
+  digitalWrite(_rst, HIGH); // NEEDED for Waveshare "clever" reset circuit, power controller before reset pulse, set (needed e.g. for RP2040)
+  delay(100); // NEEDED for Waveshare "clever" reset circuit, at least delay(2);
+  digitalWrite(_rst, LOW);
+  delay(_reset_duration);
+  digitalWrite(_rst, HIGH);
+  delay(_reset_duration > 10 ? _reset_duration : 100);
+  _hibernating = false;
+}
 
 void GxEPD2_1330::_InitDisplay()
 {
   if (_hibernating) _reset();
+  Serial.println("init display started");
+  _waitWhileBusy();
   _writeCommand(0x12); // SW RESET
   _waitWhileBusy();
 

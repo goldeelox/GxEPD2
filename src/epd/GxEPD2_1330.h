@@ -56,7 +56,7 @@ class GxEPD2_1330 : public GxEPD2_EPD
     void _Init_Part();
     void _Update_Full();
     void _Update_Part();
-    /* void _reset(); */
+    void _reset();
 };
 
 #endif
