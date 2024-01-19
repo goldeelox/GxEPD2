@@ -27,8 +27,7 @@ void GxEPD2_1330::writeScreenBuffer(uint8_t value)
 {
   _initial_write = false; // initial full screen buffer clean done
   if (!_using_partial_mode) _Init_Part();
-  if (value == 0xFF) value = 0x33; // white value for this controller
-  _writeCommand(0x10);
+  _writeCommand(0x24);
   _startTransfer();
   for (uint32_t i = 0; i < uint32_t(WIDTH) * uint32_t(HEIGHT) / 2; i++)
   {
@@ -324,7 +323,9 @@ void GxEPD2_1330::_PowerOn()
 {
   if (!_power_is_on)
   {
-    _writeCommand(0x04);
+    _writeCommand(0x22);
+    _writeData(0xF7);
+    _writeCommand(0x20);
     _waitWhileBusy("_PowerOn", power_on_time);
   }
   _power_is_on = true;
